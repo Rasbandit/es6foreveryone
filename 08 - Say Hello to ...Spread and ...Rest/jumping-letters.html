@@ -18,11 +18,12 @@
     }
     .jump span {
       display: inline-block;
-      transition: transform 0.2s;
+      transition: transform 1.2s;
       cursor:url('http://csscursor.info/source/santahand.png'), default;
     }
     .jump span:hover {
-      transform: translateY(-20px) rotate(10deg) scale(2);
+      transform: translateY(-20px) rotate(500deg) scale(2);
+      text-shadow: 10px 10px 0 rgba(0,0,0,0.15);
     }
   </style>
 </head>
@@ -30,7 +31,14 @@
   <h2 class="jump">SPREADS!</h2>
 
 <script>
-  
+
+  const header = document.querySelector('.jump');
+
+  let letters = [...header.innerText].map(letter => `<span>${letter}</span>`).join('');
+
+  header.innerHTML = letters;
+
+
 </script>
 </body>
 </html>
