@@ -19,37 +19,32 @@
   ];
 
   function getPostById(id) {
-    // create a new promise
     return new Promise((resolve, reject) => {
-      // using a settimeout to mimick a databse
       setTimeout(() => {
-        // find the post we want
         const post = posts.find(post => post.id === id);
         if(post) {
-          resolve(post); // send the post back
-        } else {
-          reject(Error('No Post Was Found!'));
+          resolve(post)
+        }
+        else {
+          reject(ERROR('No Post Was Found'))
         }
       }, 200);
-    });
+    })
   }
 
   function hydrateAuthor(post) {
-    // create a new promise
     return new Promise((resolve, reject) => {
-      // find the author
       const authorDetails = authors.find(person => person.name === post.author);
       if(authorDetails) {
-        // "hydrate" the post object with the author object
-        post.author = authorDetails;
+        post.author = authorDetails
         resolve(post);
       } else {
-        reject(Error('Can not find the author'));
+        reject(Error("Can not find the author"))
       }
-    });
+    })
   }
 
-  getPostById(3)
+  getPostById(2)
     .then(post => {
       return hydrateAuthor(post);
     })
@@ -57,8 +52,8 @@
       console.log(post);
     })
     .catch(err => {
-      console.error(err);
-    });
+      console.error(err)
+    })
 
 
 
